@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,8 +19,18 @@ public class Bullet : MonoBehaviour
 
         transform.position = new Vector3(pos.x, pos.y, pos.z);
 
-        if(pos.z >= 20)
+        if (pos.z >= 20)
         {
+            Destroy(this.gameObject);
+        }
+
+    }
+    //“–‚½‚è”»’èŠÖ”
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.GetComponent<Enemy>().Damage();
             Destroy(this.gameObject);
         }
     }
